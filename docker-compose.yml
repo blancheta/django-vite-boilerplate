@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    expose:
+      - 8000
+    volumes:
+      - static_volume:/app/static
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    volumes:
+      - frontend_volume:/frontend/dist
+  nginx:
+    build: ./nginx
+    ports:
+      - 1337:80
+    depends_on:
+      - backend
+      - frontend
+    volumes:
+      - static_volume:/app/static
+      - frontend_volume:/frontend/dist
+volumes:
+  static_volume:
+  frontend_volume:
