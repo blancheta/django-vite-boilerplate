@@ -30,3 +30,4 @@ docker-compose up --build
 
 ### Access the project
 http://127.0.0.1:1337
+- Port 1337 is mentioned in docker-compose.yml in ports saying that the port 1337 will redirect to the port 80 of the frontend project
